@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.unix14.android.wheretosea.R
 import com.unix14.android.wheretosea.models.Forecast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener {
+class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener,
+    ChipNavigationBar.OnItemSelectedListener {
 
     private val viewModel by viewModel<MainViewModel>()
 
@@ -25,10 +27,16 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener {
         setContentView(R.layout.activity_main)
 
 
+        initNavBar()
 //        initUi()
         initObservers()
 
         viewModel.fetchForecast(32.048157f,34.7467756f)
+    }
+
+    private fun initNavBar() {
+        mainActNavBar.setItemSelected(R.id.home)
+        mainActNavBar.setOnItemSelectedListener(this)
     }
 
     private fun initUi() {
@@ -78,7 +86,6 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener {
 
 
             val entries = ArrayList<Entry>()
-            var i = 0
             for (i in 0 until it.hours.size) {
                 // turn your data into Entry objects
                 entries.add(Entry(i.toFloat(), it.hours[i].seaLevel[0].value))
@@ -95,4 +102,21 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener {
 //    override fun onItemClick(forecast: Forecast) {
 //        Toast.makeText(this,forecast.toString(),Toast.LENGTH_LONG).show()
 //    }
+
+    override fun onItemSelected(id: Int) {
+        when(id){
+            R.id.home -> {
+                Toast.makeText(this,"Clicked on Home",Toast.LENGTH_LONG).show()
+            }
+            R.id.pulse -> {
+                Toast.makeText(this,"Clicked on Pulse",Toast.LENGTH_LONG).show()
+            }
+            R.id.favorites -> {
+                Toast.makeText(this,"Clicked on Favorites",Toast.LENGTH_LONG).show()
+            }
+            R.id.settings -> {
+                Toast.makeText(this,"Clicked on Settings",Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 }

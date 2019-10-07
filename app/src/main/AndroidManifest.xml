@@ -17,15 +17,15 @@
             android:theme="@style/AppTheme">
         <activity android:name=".features.map.MapActivity">
 
+
+
+        </activity>
+        <activity android:name=".features.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity android:name=".features.main.MainActivity">
-
         </activity>
 
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
