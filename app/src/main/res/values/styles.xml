@@ -8,4 +8,18 @@
         <item name="colorAccent">#aaa100ff</item>
     </style>
 
+
+    <style name="AddReportTitle">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonTextStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
 </resources>
