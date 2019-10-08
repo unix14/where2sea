@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener,
                 entries.add(Entry(i.toFloat(), it.hours[i].seaLevel[0].value))
             }
 
-            val dataSet = LineDataSet(entries, "Sea Level")
+            val dataSet = LineDataSet(entries, getString(R.string.common_string_sea_level))
 
             val lineData = LineData(dataSet)
             mainActChart.data = lineData
