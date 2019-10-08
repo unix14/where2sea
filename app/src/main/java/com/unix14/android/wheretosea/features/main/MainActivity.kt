@@ -1,5 +1,6 @@
 package com.unix14.android.wheretosea.features.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.unix14.android.wheretosea.R
+import com.unix14.android.wheretosea.features.add_report.AddReportActivity
 import com.unix14.android.wheretosea.models.Forecast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -80,6 +82,11 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener,
         }
     }
 
+    private fun openAddReportActivity(){
+        val intent = Intent(this,AddReportActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun handleForecast(forecast: Forecast?) {
         forecast?.let{
 //            mainActRecyclerView
@@ -110,6 +117,7 @@ class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterListener,
             }
             R.id.pulse -> {
                 Toast.makeText(this,"Clicked on Pulse",Toast.LENGTH_LONG).show()
+                openAddReportActivity()
             }
             R.id.favorites -> {
                 Toast.makeText(this,"Clicked on Favorites",Toast.LENGTH_LONG).show()
