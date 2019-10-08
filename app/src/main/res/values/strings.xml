@@ -3,4 +3,9 @@
     <string name="add_report_frag_i_want_to">I want to..</string>
     <string name="add_report_frag_to_dive">Dive</string>
     <string name="add_report_frag_to_surf">Surf</string>
+    <string name="common_string_sea_level">Sea Level</string>
+    <string name="main_nav_bar_home">Home</string>
+    <string name="main_nav_bar_activity">Activity</string>
+    <string name="main_nav_bar_favorites">Favorites</string>
+    <string name="main_nav_bar_settings">Settings</string>
 </resources>
