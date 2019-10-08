@@ -58,11 +58,11 @@ class AddReportFragment : Fragment() {
         setOnTouchTint(addReportFragSurfing)
         setOnTouchTint(addReportFragDiving)
 
-        addReportFragDiving.setOnClickListener {
-            listener?.onWantToDive()
-        }
         addReportFragSurfing.setOnClickListener {
             listener?.onWantToSurf()
+        }
+        addReportFragDiving.setOnClickListener {
+            listener?.onWantToDive()
         }
     }
 
