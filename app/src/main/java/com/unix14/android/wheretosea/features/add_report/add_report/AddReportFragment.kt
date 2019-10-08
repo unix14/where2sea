@@ -1,28 +1,34 @@
 package com.unix14.android.wheretosea.features.add_report.add_report
 
+import android.content.Context
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.unix14.android.wheretosea.R
 import kotlinx.android.synthetic.main.add_report_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.view.MotionEvent
-import android.widget.ImageView
-import android.widget.Toast
 
 
 class AddReportFragment : Fragment() {
+
+    interface AddReportFragmentListener {
+        fun onWantToDive()
+        fun onWantToSurf()
+    }
 
     companion object {
         fun newInstance() = AddReportFragment()
     }
 
+    private var listener: AddReportFragmentListener? = null
     val viewModel by viewModel<AddReportViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.add_report_fragment, container, false)
     }
 
@@ -33,19 +39,34 @@ class AddReportFragment : Fragment() {
         initUi()
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is AddReportFragmentListener) {
+            listener = context
+        } else {
+            throw RuntimeException("$context must implement AddReportFragmentListener")
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
     private fun initClicks() {
         setOnTouchTint(addReportFragSurfing)
         setOnTouchTint(addReportFragDiving)
 
         addReportFragDiving.setOnClickListener {
-            Toast.makeText(context,"Clicked on Diving", Toast.LENGTH_LONG).show()
+            listener?.onWantToDive()
         }
         addReportFragSurfing.setOnClickListener {
-            Toast.makeText(context,"Clicked on Surfing", Toast.LENGTH_LONG).show()
+            listener?.onWantToSurf()
         }
     }
 
-    private fun setOnTouchTint(imageView: ImageView){
+    private fun setOnTouchTint(imageView: ImageView) {
         imageView.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
