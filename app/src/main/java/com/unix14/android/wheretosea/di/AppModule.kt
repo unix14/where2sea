@@ -1,6 +1,6 @@
 package com.monkeytech.playform.di
 
-import com.unix14.android.wheretosea.features.add_report.ui.addreport.AddReportViewModel
+import com.unix14.android.wheretosea.features.add_report.add_report.AddReportViewModel
 import com.unix14.android.wheretosea.features.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

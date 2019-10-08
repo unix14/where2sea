@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.unix14.android.wheretosea.R
 import com.unix14.android.wheretosea.common.Constants
-import com.unix14.android.wheretosea.features.add_report.ui.addreport.AddReportFragment
+import com.unix14.android.wheretosea.features.add_report.add_report.AddReportFragment
 
 class AddReportActivity : AppCompatActivity() {
 
